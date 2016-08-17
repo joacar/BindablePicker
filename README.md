@@ -7,7 +7,7 @@ Unlike `Xamarin.Forms.Picker` the `BindablePicker` provides a property `ItemsSou
 ## API
 * **ItemsSourceProperty** _(IList)_ Bind a list of objects that synchronize with the visual presentation
 * **DisplayMemberPath** _(string)_ The member of the object to display. Can be nested property expression
-* **DisplayMemberFunc** _(Func<object, string>)_ Func to create a custom string-representation of the objects
+* **DisplayMemberFunc** _(Func&lt;object, string&gt;)_ Func to create a custom string-representation of the objects
 * **SelectedItemProperty** _(object)_ The selected object (TwoWay-binding)
 
 # Issues
