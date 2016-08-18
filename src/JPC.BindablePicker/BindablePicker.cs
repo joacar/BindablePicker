@@ -17,7 +17,7 @@ namespace JPC.BindablePicker
 
         public Func<object, string> DisplayMemberFunc
         {
-            get { return (Func<object, string>)GetValue(DisplayMemberFuncProperty); }
+            get { return (Func<object, string>) GetValue(DisplayMemberFuncProperty); }
             set { SetValue(DisplayMemberFuncProperty, value); }
         }
 
@@ -149,7 +149,7 @@ namespace JPC.BindablePicker
         private void OnSelectedIndexChanged(object sender, EventArgs e)
         {
             // coerceSelectedIndex ensures that SelectedIndex is in range [-1,ItemsSource.Count)
-            SelectedItem = SelectedIndex == -1 ? null : ItemsSource[SelectedIndex];
+            SelectedItem = SelectedIndex == -1 ? null : ItemsSource?[SelectedIndex];
         }
 
         private void BindItems()
