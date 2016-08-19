@@ -194,15 +194,15 @@ namespace JPC.BindablePicker
             }
             // Find the property by walking the display member path to find any nested properties
             var propertyPathParts = DisplayMemberPath.Split('.');
-            object propertyValue = null;
+            object propertyValue = item;
             foreach (var propertyPathPart in propertyPathParts)
             {
-                var propInfo = item.GetType().GetTypeInfo().GetDeclaredProperty(propertyPathPart);
+                var propInfo = propertyValue.GetType().GetTypeInfo().GetDeclaredProperty(propertyPathPart);
                 if (propInfo == null)
                 {
-                    throw new ArgumentException($"No property '{DisplayMemberPath}' was found on '{item.GetType().FullName}'");
+                    throw new ArgumentException($"No property '{propertyPathPart}' was found on '{propertyValue.GetType().FullName}'");
                 }
-                propertyValue = propInfo.GetValue(item);
+                propertyValue = propInfo.GetValue(propertyValue);
             }
             if (propertyValue == null)
             {
