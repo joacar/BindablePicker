@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+	<id>JPC.BindablePicker</id>
+	<title>BindablePicker</title>
+	<version>$version$</version>
+	<authors>Joakim Carselind</authors>
+	<owners>Joakim Carselind</owners>
+	<licenseUrl>https://github.com/joacar/BindablePicker/blob/master/LICENSE</licenseUrl>
+	<projectUrl>https://github.com/joacar/BindablePicker</projectUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<releaseNotes>$releaseNotes$</releaseNotes>
+	<description>Bindable Picker for Xamarin.Forms to ease programming MVVM paradigm</description>
+	<copyright>Copyright 2016</copyright>
+	<tags>mvvm picker bindablepicker xamarin xamarin.forms</tags>
+	<dependencies>
+	  <dependency id="Xamarin.Forms" version="2.3.1.114" />
+	</dependencies>
+  </metadata>
+  <files>
+	<file src="..\src\JPC.BindablePicker\bin\$config$\JPC.BindablePicker.dll" target="lib" />
+  </files>
+</package>

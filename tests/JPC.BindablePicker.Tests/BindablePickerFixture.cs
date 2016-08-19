@@ -9,6 +9,13 @@ namespace JPC.BindablePicker.Tests
 {
     internal class ContextFixture
     {
+        public class NestedClass
+        {
+            public string Nested { get; set; }
+        }
+
+        public NestedClass Nested { get; set; }
+
         public string DisplayName { get; set; }
 
         public string ComplexName { get; set; }
@@ -71,7 +78,7 @@ namespace JPC.BindablePicker.Tests
             };
             Assert.Equal(3, picker.Items.Count);
             Assert.Equal("Monkey", picker.Items[0]);
-            items.Add(new { Name = "Pineapple" });
+            items.Add(new {Name = "Pineapple"});
             Assert.Equal(4, picker.Items.Count);
             Assert.Equal("Pineapple", picker.Items.Last());
         }
@@ -113,7 +120,7 @@ namespace JPC.BindablePicker.Tests
             };
             Assert.Equal(3, picker.Items.Count);
             Assert.Equal("Monkey", picker.Items[0]);
-            items.Insert(1, new { Name = "Pineapple" });
+            items.Insert(1, new {Name = "Pineapple"});
             Assert.Equal(4, picker.Items.Count);
             Assert.Equal("Pineapple", picker.Items[1]);
         }
@@ -127,7 +134,7 @@ namespace JPC.BindablePicker.Tests
                 "Banana",
                 "Lemon"
             };
-            var bindingContext = new { Items = items };
+            var bindingContext = new {Items = items};
             var picker = new BindablePicker
             {
                 DisplayMemberPath = "Name",
@@ -140,7 +147,7 @@ namespace JPC.BindablePicker.Tests
                 "Peach",
                 "Orange"
             };
-            picker.BindingContext = new { Items = items };
+            picker.BindingContext = new {Items = items};
             Assert.Equal(2, picker.Items.Count);
             Assert.Equal("Peach", picker.Items[0]);
         }
@@ -235,7 +242,7 @@ namespace JPC.BindablePicker.Tests
         {
             Func<object, string> customDisplayFunc = o =>
             {
-                var f = (ContextFixture)o;
+                var f = (ContextFixture) o;
                 return $"{f.DisplayName} ({f.ComplexName})";
             };
             var obj = new ContextFixture("Monkey", "Complex Monkey");
@@ -315,6 +322,28 @@ namespace JPC.BindablePicker.Tests
             picker.SelectedIndex = -1;
             Assert.Equal(-1, picker.SelectedIndex);
             Assert.Equal(null, picker.SelectedItem);
+        }
+
+        [Fact]
+        public void DisplayMemberPath_NestedPropertyExpression()
+        {
+            var obj = new ContextFixture
+            {
+                Nested = new ContextFixture.NestedClass
+                {
+                    Nested = "NestedProperty"
+                }
+            };
+            var picker = new BindablePicker
+            {
+                DisplayMemberPath = "Nested.Nested",
+                ItemsSource = new ObservableCollection<object>
+                {
+                    obj
+                },
+                SelectedIndex = 0
+            };
+            Assert.Equal("NestedProperty", picker.Items[0]);
         }
     }
 }
