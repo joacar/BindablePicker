@@ -117,7 +117,6 @@ namespace JPC.BindablePicker
             {
                 case NotifyCollectionChangedAction.Reset:
                 case NotifyCollectionChangedAction.Move:
-                    return;
                 case NotifyCollectionChangedAction.Replace:
                     BindItems();
                     break;
