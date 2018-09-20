@@ -164,11 +164,19 @@ namespace JPC.BindablePicker
             }
         }
 
+        /// <summary>
+        /// Check if <paramref name="item"/> is a primitive type.
+        /// </summary>
+        /// <remarks>
+        /// Delegates call to <see cref="object.GetType().GetTypeInfo().IsValueType"/>.
+        /// </remarks>
+        /// <returns>
+        /// <c>true</c>, if <paramref name="item"/> is primitive, <c>false</c> otherwise.
+        /// </returns>
+        /// <param name="item">The <see cref="object"/>.</param>
         private static bool IsPrimitive(object item)
         {
-            // TODO Nullable types
-            return item is string || item is int || item is double || item is decimal || item is Enum ||
-                   item is DateTime;
+            return item.GetType().GetTypeInfo().IsValueType;
         }
 
         /// <summary>
