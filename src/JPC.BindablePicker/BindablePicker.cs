@@ -94,8 +94,7 @@ namespace JPC.BindablePicker
         private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var picker = (BindablePicker)bindable;
-            var observable = oldValue as INotifyCollectionChanged;
-            if (observable != null)
+            if (oldValue is INotifyCollectionChanged observable)
             {
                 observable.CollectionChanged -= picker.CollectionChanged;
             }
@@ -197,7 +196,7 @@ namespace JPC.BindablePicker
             object propertyValue = item;
             foreach (var propertyPathPart in propertyPathParts)
             {
-                var propInfo = propertyValue.GetType().GetTypeInfo().GetDeclaredProperty(propertyPathPart);
+                PropertyInfo propInfo = propertyValue.GetType().GetTypeInfo().GetDeclaredProperty(propertyPathPart);
                 if (propInfo == null)
                 {
                     throw new ArgumentException($"No property '{propertyPathPart}' was found on '{propertyValue.GetType().FullName}'");
