@@ -1,0 +1,28 @@
+<Project>
+
+  <Import Project="version.props" />
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Authors>Joakim Carselind</Authors>
+    <Product>BindablePicker</Product>
+    <Copyright>Copyright © Joakim Carselind</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/joacar/BindablePicker</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/joacar/BindablePicker</RepositoryUrl>
+    <PackageReleaseNotes>See $(PackageProjectUrl)/blob/master/CHANGELOG.md#v$(VersionPrefix.Replace('.','')) for release notes.</PackageReleaseNotes>
+    <RepositoryType>git</RepositoryType>
+    <IsPackable>true</IsPackable>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <LangVersion>Latest</LangVersion>
+
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateFullPaths Condition="'$(VSCODE_PID)' != ''">true</GenerateFullPaths>
+
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory).build\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(MSBuildThisFileDirectory).build\bin\$(MSBuildProjectName)</BaseOutputPath>
+  </PropertyGroup>
+
+</Project>
