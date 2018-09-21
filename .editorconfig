@@ -137,6 +137,9 @@ indent_size = 8
 [*.{csproj,vcxproj,vcxproj.filters,proj,nativeproj,locproj}]
 indent_size = 2
 
+[*.yml]
+indent_size = 2
+
 # Xml config files
 [*.{props,targets,config,nuspec}]
 indent_size = 2
