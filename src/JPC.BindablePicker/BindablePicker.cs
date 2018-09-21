@@ -17,7 +17,7 @@ namespace JPC.BindablePicker
 
         public Func<object, string> DisplayMemberFunc
         {
-            get { return (Func<object, string>) GetValue(DisplayMemberFuncProperty); }
+            get { return (Func<object, string>)GetValue(DisplayMemberFuncProperty); }
             set { SetValue(DisplayMemberFuncProperty, value); }
         }
 
@@ -174,8 +174,12 @@ namespace JPC.BindablePicker
         /// <c>true</c>, if <paramref name="item"/> is primitive, <c>false</c> otherwise.
         /// </returns>
         /// <param name="item">The <see cref="object"/>.</param>
-        private static bool IsPrimitive(object item)
+        protected virtual bool IsPrimitive(object item)
         {
+            if (item is null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
             return item.GetType().GetTypeInfo().IsValueType;
         }
 
