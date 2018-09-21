@@ -284,13 +284,13 @@ namespace JPC.BindablePicker.Tests
             picker.SetBinding(BindablePicker.SelectedItemProperty, "SelectedItem");
             Assert.Equal(1, picker.Items.Count);
             Assert.Equal(-1, picker.SelectedIndex);
-            Assert.Equal(null, picker.SelectedItem);
+            Assert.Null(picker.SelectedItem);
             picker.SelectedItem = obj;
             Assert.Equal(0, picker.SelectedIndex);
             Assert.Equal(obj, picker.SelectedItem);
             picker.SelectedIndex = -1;
             Assert.Equal(-1, picker.SelectedIndex);
-            Assert.Equal(null, picker.SelectedItem);
+            Assert.Null(picker.SelectedItem);
         }
 
         [Fact]
