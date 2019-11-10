@@ -108,13 +108,17 @@ namespace JPC.BindablePicker
 
         private void CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            // remember selection
+            int selectedIndex = SelectedIndex;
+
+            // update collection
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Reset:
                 case NotifyCollectionChangedAction.Move:
                 case NotifyCollectionChangedAction.Replace:
                     BindItems();
-                    return;
+                    break;
                 case NotifyCollectionChangedAction.Remove:
                     RemoveItems(e);
                     break;
@@ -124,6 +128,14 @@ namespace JPC.BindablePicker
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            // restore selection
+            SelectedIndex = selectedIndex;
+            if( selectedIndex >= ItemsSource.Count )
+            {
+                selectedIndex = ItemsSource.Count - 1;
+            }
+            OnSelectedIndexChanged(null, null);
         }
 
         private void AddItems(NotifyCollectionChangedEventArgs e)
